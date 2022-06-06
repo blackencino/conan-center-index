@@ -1,0 +1,65 @@
+--- CMakeLists.txt	2022-06-06 13:32:44.758098400 -0700
++++ CMakeLists.txt	2022-06-06 13:42:26.386043900 -0700
+@@ -42,7 +42,7 @@
+ 
+ # note: cmake_minimum_required must be called before project commands to
+ #  ensure policy scope is set up correctly
+-cmake_minimum_required(VERSION 3.12)
++cmake_minimum_required(VERSION 3.15)
+ 
+ # CMP0091 allows for MSVC ABI targetting via CMAKE_MSVC_RUNTIME_LIBRARY
+ # from CMake 3.15 and above. Must come before project().
+--- openvdb/openvdb/CMakeLists.txt	2022-06-06 13:32:44.342168700 -0700
++++ openvdb/openvdb/CMakeLists.txt	2022-06-06 13:37:58.898079300 -0700
+@@ -7,7 +7,7 @@
+ 
+ #]=======================================================================]
+ 
+-cmake_minimum_required(VERSION 3.12)
++cmake_minimum_required(VERSION 3.15)
+ project(OpenVDBCore LANGUAGES CXX)
+ 
+ include(GNUInstallDirs)
+@@ -470,7 +470,8 @@
+ if(WIN32)
+   if(USE_IMATH_HALF)
+     # @note OPENVDB_OPENEXR_STATICLIB is old functionality and should be removed
+-    if(ILMBASE_USE_STATIC_LIBS OR (${ILMBASE_Half_LIB_TYPE} STREQUAL STATIC_LIBRARY))
++    # if(ILMBASE_USE_STATIC_LIBS OR (${ILMBASE_Half_LIB_TYPE} STREQUAL STATIC_LIBRARY))
++    if(OPENEXR_USE_STATIC_LIBS)
+       list(APPEND OPENVDB_CORE_PUBLIC_DEFINES -DOPENVDB_OPENEXR_STATICLIB)
+     endif()
+   endif()
+--- openvdb_ax/openvdb_ax/CMakeLists.txt	2022-06-06 13:32:42.925532900 -0700
++++ openvdb_ax/openvdb_ax/CMakeLists.txt	2022-06-06 13:38:24.625068500 -0700
+@@ -7,7 +7,7 @@
+ 
+ #]=======================================================================]
+ 
+-cmake_minimum_required(VERSION 3.12)
++cmake_minimum_required(VERSION 3.15)
+ project(OpenVDBAXCore LANGUAGES CXX)
+ 
+ include(GNUInstallDirs)
+--- openvdb_houdini/openvdb_houdini/CMakeLists.txt	2022-06-06 13:32:42.979392200 -0700
++++ openvdb_houdini/openvdb_houdini/CMakeLists.txt	2022-06-06 13:38:36.329701200 -0700
+@@ -40,7 +40,7 @@
+ 
+ #]=======================================================================]
+ 
+-cmake_minimum_required(VERSION 3.12)
++cmake_minimum_required(VERSION 3.15)
+ project(OpenVDBHoudini LANGUAGES CXX)
+ 
+ 
+--- openvdb_maya/openvdb_maya/CMakeLists.txt	2022-06-06 13:32:44.893639700 -0700
++++ openvdb_maya/openvdb_maya/CMakeLists.txt	2022-06-06 13:38:47.465478100 -0700
+@@ -7,7 +7,7 @@
+ 
+ #]=======================================================================]
+ 
+-cmake_minimum_required(VERSION 3.12)
++cmake_minimum_required(VERSION 3.15)
+ project(OpenVDBMaya  LANGUAGES CXX)
+ 
+ 

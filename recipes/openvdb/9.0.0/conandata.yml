@@ -1,0 +1,8 @@
+sources:
+  "9.0.0":
+    url: "https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v9.0.0.tar.gz"
+    sha256: "ad3816e8f1931d1d6fdbddcec5a1acd30695d049dd10aa965096b2fb9972b468"
+patches:
+  "9.0.0":
+    - patch_file: "patches/9.0.0-all.patch"
+      base_path: "source_subfolder"
