@@ -10,6 +10,7 @@ required_conan_version = ">=1.45.0"
 
 class OpenVDBConan(ConanFile):
     name = "openvdb"
+    version = "8.1.0"
     description = (
         "OpenVDB is an open source C++ library comprising a novel hierarchical data"
         "structure and a large suite of tools for the efficient storage and "
@@ -75,18 +76,18 @@ class OpenVDBConan(ConanFile):
             del self.options.fPIC
 
     def requirements(self):
-        self.requires("boost/1.79.0")
+        self.requires("boost/[>=1.79.0]")
         self.requires("onetbb/2020.3")
-        self.requires("openexr/2.5.7")  # required for IlmBase::Half
+        self.requires("openexr/[>=2.5.7 <3]")  # required for IlmBase::Half
         if self.options.with_zlib:
-            self.requires("zlib/1.2.12")
-        if self.options.with_exr:
-            # Not necessary now. Required for IlmBase::IlmImf
-            self.requires("openexr/2.5.7")
+            self.requires("zlib/[>=1.2.11]")
+        #if self.options.with_exr:
+        #    # Not necessary now. Required for IlmBase::IlmImf
+        #    self.requires("openexr/2.5.7")
         if self.options.with_blosc:
-            self.requires("c-blosc/1.21.1")
+            self.requires("c-blosc/[>=1.21.1]")
         if self.options.with_log4cplus:
-            self.requires("log4cplus/2.0.7")
+            self.requires("log4cplus/[>=2.0.7]")
 
     def _check_compilier_version(self):
         compiler = str(self.settings.compiler)
